@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: aacfcc2a55df643448bf3c34b1685120
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 4890085278179872738
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 165732
+  packageName: Sci-Fi Armchair
+  packageVersion: 1.2
+  assetPath: Assets/SciFiArmchair/Levels/SciFiArmchairDemoLightingSettings.lighting
+  uploadId: 525976
