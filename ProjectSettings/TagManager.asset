@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - FidgetCube
+  - Paper
   layers:
   - Default
   - TransparentFX
