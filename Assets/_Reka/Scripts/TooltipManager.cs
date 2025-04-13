@@ -6,14 +6,17 @@ public class TooltipManager : MonoBehaviour
 {
     public Camera mainCamera;
     public float maxDistance = 5f;
+    [SerializeField]
     private List<TooltipTextUpdater> tooltips;
 
     void Start()
     {
         if (mainCamera == null)
             mainCamera = Camera.main;
-
-    tooltips = new List<TooltipTextUpdater>(FindObjectsByType<TooltipTextUpdater>(FindObjectsSortMode.None));
+    
+    List<TooltipTextUpdater> tooltips_n = new List<TooltipTextUpdater>(FindObjectsByType<TooltipTextUpdater>(FindObjectsSortMode.None));
+    foreach (TooltipTextUpdater tooltipText in tooltips_n)
+        tooltips.Add(tooltipText);
 
     }
 
@@ -25,11 +28,13 @@ public class TooltipManager : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, maxDistance))
         {
-            Debug.Log("Hit: " + hit.collider.name);
             foreach (var tooltip in tooltips)
             {
+                Debug.Log("Hit: " + hit.collider.name+ " == " + tooltip.targetObject.name); 
                 if (hit.collider.gameObject == tooltip.targetObject)
                 {
+                    Debug.Log("tooltip: " + hit.collider.gameObject.name);
+                    tooltip.gameObject.SetActive(true);
                     activeTooltip = tooltip;
                     break;
                 }

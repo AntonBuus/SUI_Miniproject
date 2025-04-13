@@ -66,8 +66,8 @@ public class TooltipTextUpdater : MonoBehaviour
 
     public void SetVisible(bool isVisible)
     {
-        if (canvas != null)
-            canvas.enabled = isVisible;
+        if (gameObject != null)
+            gameObject.SetActive(isVisible);
     }
 
     private void UpdateTooltipText()
