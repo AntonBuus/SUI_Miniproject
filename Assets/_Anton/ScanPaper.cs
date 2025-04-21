@@ -9,6 +9,7 @@ public class ScanPaper : MonoBehaviour
     public GameObject pendingToBeSaved;
     public GameObject confirmScanMenu;
     public TMP_Text statusText;
+    public float _copyPositionOffset = 0.2f; // Offset for the copied paper position
     private Vector3 paperPosition; // Store the position of the scanned paper
     
 
@@ -21,9 +22,9 @@ public class ScanPaper : MonoBehaviour
             Destroy(scanEffect, 2f); // Destroy the effect after 2 seconds
             Debug.Log("Paper scanned!");
             pendingToBeSaved = other.gameObject;
-            paperPosition = new Vector3(other.transform.position.x, other.transform.position.y + 0.5f, other.transform.position.z);
+            paperPosition = new Vector3(other.transform.position.x, other.transform.position.y + _copyPositionOffset, other.transform.position.z);
 
-            confirmScanMenu.SetActive(true);
+            // confirmScanMenu.SetActive(true);
         }
         Debug.Log("Hallo");
     }
