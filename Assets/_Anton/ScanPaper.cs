@@ -23,7 +23,7 @@ public class ScanPaper : MonoBehaviour
             Debug.Log("Paper scanned!");
             pendingToBeSaved = other.gameObject;
             paperPosition = new Vector3(other.transform.position.x, other.transform.position.y + _copyPositionOffset, other.transform.position.z);
-
+            confirmScanMenu.SetActive(true);
             // confirmScanMenu.SetActive(true);
         }
         Debug.Log("Hallo");
@@ -47,18 +47,20 @@ public class ScanPaper : MonoBehaviour
             }
             copiedRenderer.material.color = Color.cyan; // Change color to light blue for the copied paper
             pendingToBeSaved = null;
+            confirmScanMenu.SetActive(false);
+            ReadyScan();
         }
         else
         {
             Debug.Log("No paper to save!");
 
         }
-        confirmScanMenu.SetActive(false);
+        
     }
     public void ReadyScan()
     {
         readyToScan = true;
-        confirmScanMenu.SetActive(false);
+
         Debug.Log("Ready to scan again!");
         if (pendingToBeSaved != null)
         {
