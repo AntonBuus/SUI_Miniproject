@@ -12480,7 +12480,7 @@ MonoBehaviour:
     volume: 1
     pitch: 0
     spatialBlend: 1
-    loop: 1
+    loop: 0
     source: {fileID: 0}
 --- !u!82 &1604300664
 AudioSource:
