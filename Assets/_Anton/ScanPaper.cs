@@ -39,6 +39,8 @@ public class ScanPaper : MonoBehaviour
             GameObject copiedPaper = Instantiate(pendingToBeSaved, paperPosition, pendingToBeSaved.transform.rotation);
             copiedPaper.name = pendingToBeSaved.name + "_Copy";
             copiedPaper.transform.SetParent(null); // Unparent the copied paper
+            
+            //change the color of the copied paper to light blue
             Renderer copiedRenderer = copiedPaper.GetComponent<Renderer>();
             if (copiedRenderer != null)
             {
@@ -46,6 +48,14 @@ public class ScanPaper : MonoBehaviour
                 Debug.Log("Copied paper material: " + copiedMaterial.name);
             }
             copiedRenderer.material.color = Color.cyan; // Change color to light blue for the copied paper
+            
+            //make the copied paper kinematic
+            Rigidbody copiedRigidbody = copiedPaper.GetComponent<Rigidbody>();
+            if (copiedRigidbody != null)
+            {
+                copiedRigidbody.isKinematic = true; // Make the copied paper kinematic
+            }
+            
             pendingToBeSaved = null;
             confirmScanMenu.SetActive(false);
             ReadyScan();
