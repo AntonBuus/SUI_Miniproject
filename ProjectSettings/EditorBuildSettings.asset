@@ -6,9 +6,10 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/_Anton/Embodied Interaction/Showcase_EI.unity
-    guid: 6f98daafd99c65e49833234464919adf
+    path: Assets/__Main/Iteration 1/WorkingScene.unity
+    guid: add423f50e9e01b479db293ccda63037
   m_configObjects:
+    Unity.XR.Oculus.Settings: {fileID: 11400000, guid: e507ee46203bcec4b807472aa119919b, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 25f3b556911c13c41b65cbfccae0766f, type: 2}
     com.unity.xr.openxr.settings4: {fileID: 11400000, guid: 855b372d01e7ed64ab26fb5836ab9fe1, type: 2}
