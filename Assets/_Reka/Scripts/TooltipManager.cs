@@ -84,7 +84,7 @@ public class TooltipManager : MonoBehaviour
         {
             // Do a sphere cast at the hit point to check for nearby objects
             Collider[] hits = Physics.OverlapSphere(hit.point, sphereRadius);
-
+            Debug.Log(hits.Length + " hits found " + hits[0].name);
             foreach (var tooltip in tooltips)
             {
                 foreach (var nearby in hits)
