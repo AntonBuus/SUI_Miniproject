@@ -17,8 +17,8 @@ public class DetectCurlAndSelect : MonoBehaviour
     public float _shellMultiplier = 0.5f;
     public GameObject _placeholderObject;
     public Collider _triggerCollider;
-
-
+    
+    
     [Header("Multipliers")]
     [Range(0.1f, 0.6f)] public float _scaleMultiplier = 0.3f;
     [Range(0f, 360f)] public float _rotationMultiplier;
@@ -32,6 +32,8 @@ public class DetectCurlAndSelect : MonoBehaviour
             figdetCube = other.gameObject;
             figdetShell = figdetCube.gameObject.transform.GetChild(0).gameObject;
             _triggerCollider.enabled = false;
+            PlayFromAudiomanager();
+            
         }
         // Debug.Log("something here");
     }
@@ -63,11 +65,23 @@ public class DetectCurlAndSelect : MonoBehaviour
     void ScaleObject()
     {
         float invertedIndexValue = 1 - _index_FSB.valueBar.localScale.x;
-        figdetCube.transform.localScale = new Vector3(invertedIndexValue*_scaleMultiplier, invertedIndexValue*_scaleMultiplier, invertedIndexValue*_scaleMultiplier);
+        figdetCube.transform.localScale = new Vector3(invertedIndexValue*_scaleMultiplier, 
+        invertedIndexValue*_scaleMultiplier, invertedIndexValue*_scaleMultiplier);
 
         // figdetCube.transform.localScale = new Vector3(_index_FSB.valueBar.localScale.x*_scaleMultiplier, _index_FSB.valueBar.localScale.x*_scaleMultiplier, _index_FSB.valueBar.localScale.x*_scaleMultiplier);
         
         // figdetCube.transform.rotation = new Quaternion(0f, _thumb_FSB.valueBar.localScale.x*_rotationMultiplier, 0f, _thumb_FSB.valueBar.localScale.x*_rotationMultiplier);
-        figdetCube.transform.rotation = Quaternion.Euler(0f, _thumb_FSB.valueBar.localScale.x * _rotationMultiplier, 0f);
+        figdetCube.transform.rotation = Quaternion.Euler(0f, _thumb_FSB.valueBar.localScale.x 
+        * _rotationMultiplier, 0f);
+    }
+    
+    //setup for using audio manager if available
+    public UnityEngine.Events.UnityEvent onInvoke;
+    private void PlayFromAudiomanager()
+    {
+        if (onInvoke != null)
+        {
+            onInvoke.Invoke();
+        }
     }
 }

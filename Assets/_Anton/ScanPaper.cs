@@ -9,8 +9,10 @@ public class ScanPaper : MonoBehaviour
     public GameObject pendingToBeSaved;
     public GameObject confirmScanMenu;
     public TMP_Text statusText;
-    public float _copyPositionOffset = 0.2f; // Offset for the copied paper position
+    public float _copyPositionOffset = 0.1f; // Offset for the copied paper position
     private Vector3 paperPosition; // Store the position of the scanned paper
+
+    public Material _copiedMaterial;
     
 
     private void OnTriggerEnter(Collider other) 
@@ -25,6 +27,7 @@ public class ScanPaper : MonoBehaviour
             paperPosition = new Vector3(other.transform.position.x, other.transform.position.y + _copyPositionOffset, other.transform.position.z);
             confirmScanMenu.SetActive(true);
             // confirmScanMenu.SetActive(true);
+            PlayFromAudiomanager();
         }
         Debug.Log("Hallo");
     }
@@ -47,7 +50,7 @@ public class ScanPaper : MonoBehaviour
                 Material copiedMaterial = copiedRenderer.material;
                 Debug.Log("Copied paper material: " + copiedMaterial.name);
             }
-            copiedRenderer.material.color = Color.cyan; // Change color to light blue for the copied paper
+            copiedRenderer.material = _copiedMaterial; // Change color to light blue for the copied paper
             
             //make the copied paper kinematic
             Rigidbody copiedRigidbody = copiedPaper.GetComponent<Rigidbody>();
@@ -76,6 +79,16 @@ public class ScanPaper : MonoBehaviour
         {
             Destroy(pendingToBeSaved);
             pendingToBeSaved = null;
+        }
+    }
+
+        //setup for using audio manager if available
+    public UnityEngine.Events.UnityEvent onInvoke;
+    private void PlayFromAudiomanager()
+    {
+        if (onInvoke != null)
+        {
+            onInvoke.Invoke();
         }
     }
     
