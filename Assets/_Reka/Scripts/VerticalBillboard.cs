@@ -13,12 +13,11 @@ public class VerticalBillboard : MonoBehaviour
         target = Camera.main.gameObject.transform;
     }
 
+    // Rotates the object each frame to face the camera (used for billboard effect)
+    // This is done in the Update method to ensure it happens every frame
+    // The LookAt method makes the object face the target (camera)
     void Update()
     {
-        if (target == null) return;
-
-        // Only rotate around the Y-axis (vertical) for readability
-        Vector3 targetPosition = new Vector3(target.position.x, transform.position.y, target.position.z);
-        transform.LookAt(targetPosition);
+        transform.LookAt(target);
     }
 }
