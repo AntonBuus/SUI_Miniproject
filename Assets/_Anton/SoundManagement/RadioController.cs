@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class RadioController : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    // we put this on the radio (on a XR simple interactable) to allow the player to toggle the radio sound
     public AudioSource audioSource;
 
     public void SoundToggle()

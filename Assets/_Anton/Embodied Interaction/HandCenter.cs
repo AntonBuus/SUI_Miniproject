@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class HandCenter : MonoBehaviour
 {
-
+    // Was used to debug what degrees was optimal to use from the hancenter
     public GameObject _handCenter;
 
     void Update()

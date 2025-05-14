@@ -2,6 +2,8 @@ using UnityEngine.Audio;
 using UnityEngine;
 
 [System.Serializable]
+// borowed from a previous project
+// this class is used to create a sound object that can be played
 public class Sound
 {
 
