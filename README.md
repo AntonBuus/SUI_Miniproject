@@ -10,13 +10,13 @@ Réka Mészáros: rmesza24@student.aau.dk
 
 ## Spatial User Interface
 
-The scene in the unity-project used for the SUI showcase day is found under Assets>_Main>Iteration_1>MainScene
+The scene in the unity-project used for the SUI showcase day is found under `Assets>_Main>Iteration 1>MainScene`
 
 Relevant scripts (with describing comments) is found in all places EXCEPT "Embodied Interaction"
 
 
 ## Embodied interaction
-This project hosts the implementation files for Anton Buus Hansen attending the Embodied Interaction course. To view relevant project-files in relation to the course go to Assets>_Anton>Embodied Interaction. All scripts used for the implementation is found in this folder. 
+This project hosts the implementation files for Anton Buus Hansen attending the Embodied Interaction course. To view relevant project-files in relation to the course go to `Assets>_Anton>Embodied Interaction`. All scripts used for the implementation is found in this folder. 
 
 Additionally in the folder is found the scene named "Showcase_EI" which is the most optimal scene for trying out the interaction. 
 
