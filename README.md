@@ -1,5 +1,6 @@
 # SUI_Miniproject
 IMPORTANT: THIS PROJECT ALSO CONTAINS CODE FOR THE COURSE EMBODIED INTERACTION. MORE INFO FURHTER DOWN
+
 -----------Project Developers:-----------
 
 Anton Buus Hansen: antonbuushansen@gmail.com
