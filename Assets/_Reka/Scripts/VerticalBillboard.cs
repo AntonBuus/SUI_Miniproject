@@ -1,19 +1,24 @@
 using UnityEngine;
 
+// This script creates a line between two points in 3D space using a LineRenderer component.
+
+// Makes the tooltip face the camera vertically
 public class VerticalBillboard : MonoBehaviour
 {
     public Transform target;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         if(target == null)
         target = Camera.main.gameObject.transform;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        transform.LookAt(target);
+        if (target == null) return;
+
+        // Only rotate around the Y-axis (vertical) for readability
+        Vector3 targetPosition = new Vector3(target.position.x, transform.position.y, target.position.z);
+        transform.LookAt(targetPosition);
     }
 }
