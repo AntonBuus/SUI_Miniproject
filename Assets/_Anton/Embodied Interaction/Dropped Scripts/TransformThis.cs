@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class TransformThis : MonoBehaviour
 {
+    
     public Transform target;
 
     public float amplifier =5.0f;

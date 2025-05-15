@@ -1,17 +1,19 @@
 using System;
+using Unity.Android.Gradle.Manifest;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.XR.Hands.Samples.Gestures.DebugTools;
 
 public class DetectCurlAndSelect : MonoBehaviour
 {
+    //references the the finger float values
     public XRFingerShapeDebugBar _thumb_FSB;
     public XRFingerShapeDebugBar _index_FSB;
     public XRFingerShapeDebugBar _middle_FSB;
     public XRFingerShapeDebugBar _ring_FSB;
     public XRFingerShapeDebugBar _pinky_FSB;
 
-    public InputActionProperty _deselectItem;
+    public InputActionProperty _deselectItem; // References the action of the left hand pinch
     public GameObject figdetCube;
     public GameObject figdetShell;
     public float _shellMultiplier = 0.5f;
@@ -39,15 +41,16 @@ public class DetectCurlAndSelect : MonoBehaviour
     }
     void Update()
     {
+        // deselect a chosen object if the user pinches with their left hand
         if(_deselectItem.action.WasPressedThisFrame() && figdetCube != _placeholderObject)
         {
             figdetCube = _placeholderObject;
-            figdetShell = figdetCube.gameObject.transform.GetChild(0).gameObject;
+            figdetShell = figdetCube.gameObject.transform.GetChild(0).gameObject; // resets the shell to the placeholder object
             _triggerCollider.enabled = true;
             
             Debug.Log("deselecting object: ");
         }
-        if (figdetCube != _placeholderObject)
+        if (figdetCube != _placeholderObject) //scales if object is selected
         {
             ScaleObject();
             ScaleShell();
@@ -56,23 +59,24 @@ public class DetectCurlAndSelect : MonoBehaviour
     }
     private void ScaleShell()
     {
-        float posVal = _ring_FSB.valueBar.localScale.x;
-        float invertedPosValue = 1 - posVal;
-        float constrainedScale = invertedPosValue * _shellMultiplier;
-        // float clampedScale = Mathf.Clamp(constrainedScale, 0.1f, 0.2f);
+        float posVal = _ring_FSB.valueBar.localScale.x; //float value of the ring finger
+        float invertedPosValue = 1 - posVal; //inverted value of the ring finger
+        float constrainedScale = invertedPosValue * _shellMultiplier; // combining for ease of use
+        // +1 one on each axis to prevent the shell from shirinking below the size of the cube
         figdetShell.transform.localScale = new Vector3(1f + constrainedScale, 1f + constrainedScale, 1f + constrainedScale);
     }
-    void ScaleObject()
-    {
-        float invertedIndexValue = 1 - _index_FSB.valueBar.localScale.x;
-        figdetCube.transform.localScale = new Vector3(invertedIndexValue*_scaleMultiplier, 
-        invertedIndexValue*_scaleMultiplier, invertedIndexValue*_scaleMultiplier);
 
-        // figdetCube.transform.localScale = new Vector3(_index_FSB.valueBar.localScale.x*_scaleMultiplier, _index_FSB.valueBar.localScale.x*_scaleMultiplier, _index_FSB.valueBar.localScale.x*_scaleMultiplier);
-        
-        // figdetCube.transform.rotation = new Quaternion(0f, _thumb_FSB.valueBar.localScale.x*_rotationMultiplier, 0f, _thumb_FSB.valueBar.localScale.x*_rotationMultiplier);
+    void ScaleObject() //both scales and rotates the target object
+    {
+
+        float invertedIndexValue = 1 - _index_FSB.valueBar.localScale.x; //inverted value of the index finger
+        //Scales the target object based on finger curl and the scale multiplier which is set in the inspector
+        figdetCube.transform.localScale = new Vector3(invertedIndexValue*_scaleMultiplier, 
+        invertedIndexValue*_scaleMultiplier, invertedIndexValue*_scaleMultiplier); 
+
+         
         figdetCube.transform.rotation = Quaternion.Euler(0f, _thumb_FSB.valueBar.localScale.x 
-        * _rotationMultiplier, 0f);
+        * _rotationMultiplier, 0f); // uses a euler angle to rotate the object around the y axis
     }
     
     //setup for using audio manager if available

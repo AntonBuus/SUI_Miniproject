@@ -36,7 +36,7 @@ public class PositionAboveAndSelect : MonoBehaviour
         //Height calculation
         float posVal = _DC._middle_FSB.valueBar.localScale.x;
         float invertedPosValue = 1 - posVal;
-        float constrainedHeight = invertedPosValue*_maxHeight;
+        float constrainedHeight = invertedPosValue*_maxHeight; 
         float constrainedValue = Mathf.Clamp(constrainedHeight, _minHeight, _maxHeight);
 
         //Position calculation
@@ -54,8 +54,7 @@ public class PositionAboveAndSelect : MonoBehaviour
             clamped_handCenterRotationZ = 0f;
         }
 
-        // Debug.Log("Clamped _handCenterRotation X: " + clamped_handCenterRotationX + ", Clamped _handCenterRotation Z: " + clamped_handCenterRotationZ);
-        
+        // Combine height and position calculations on the same frame       
         _DC.figdetCube.transform.position = new Vector3(
         anchorPoint.transform.position.x - _positionMultiplierZ*clamped_handCenterRotationZ, //positionX
         anchorPoint.transform.position.y + constrainedValue, //heightOffset

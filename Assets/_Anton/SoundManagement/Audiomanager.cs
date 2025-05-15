@@ -2,6 +2,7 @@ using UnityEngine.Audio;
 using System;
 using UnityEngine;
 
+// sound manager borrowed from a previous project
 public class AudioManager : MonoBehaviour
 {
     //Creats the sound array
@@ -39,11 +40,6 @@ public class AudioManager : MonoBehaviour
 
     }
 
-    void Start()
-    {
-        Play("Theme");
-        //Debug.Log("Start is working");
-    }
 
     //To call:
     //FindObjectOfType<AudioManager>().Play("clip_name");

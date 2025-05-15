@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class LineController : MonoBehaviour
 {
+    // Made this script initally because i wanted a line to follow the finger tip,
+    // thoug it did not lead to a satifying interaction
     LineRenderer _LR;
 
     [SerializeField] Transform _fingerTip;
