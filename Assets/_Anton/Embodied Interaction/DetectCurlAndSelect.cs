@@ -14,10 +14,10 @@ public class DetectCurlAndSelect : MonoBehaviour
     public XRFingerShapeDebugBar _pinky_FSB;
 
     public InputActionProperty _deselectItem; // References the action of the left hand pinch
-    public GameObject figdetCube;
-    public GameObject figdetShell;
+    public GameObject figdetCube; //the item that will be selected
+    public GameObject figdetShell; //first childobject of the selected item
     public float _shellMultiplier = 0.5f;
-    public GameObject _placeholderObject;
+    public GameObject _placeholderObject; //object assigned to the fidgetCube when nothing is selected
     public Collider _triggerCollider;
     
     
@@ -63,7 +63,8 @@ public class DetectCurlAndSelect : MonoBehaviour
         float invertedPosValue = 1 - posVal; //inverted value of the ring finger
         float constrainedScale = invertedPosValue * _shellMultiplier; // combining for ease of use
         // +1 one on each axis to prevent the shell from shirinking below the size of the cube
-        figdetShell.transform.localScale = new Vector3(1f + constrainedScale, 1f + constrainedScale, 1f + constrainedScale);
+        figdetShell.transform.localScale = new Vector3(1f + constrainedScale, 1f + 
+        constrainedScale, 1f + constrainedScale);
     }
 
     void ScaleObject() //both scales and rotates the target object
