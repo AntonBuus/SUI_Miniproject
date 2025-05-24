@@ -1,5 +1,4 @@
 using System;
-using Unity.Android.Gradle.Manifest;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.XR.Hands.Samples.Gestures.DebugTools;
@@ -74,7 +73,6 @@ public class DetectCurlAndSelect : MonoBehaviour
         //Scales the target object based on finger curl and the scale multiplier which is set in the inspector
         figdetCube.transform.localScale = new Vector3(invertedIndexValue*_scaleMultiplier, 
         invertedIndexValue*_scaleMultiplier, invertedIndexValue*_scaleMultiplier); 
-
          
         figdetCube.transform.rotation = Quaternion.Euler(0f, _thumb_FSB.valueBar.localScale.x 
         * _rotationMultiplier, 0f); // uses a euler angle to rotate the object around the y axis
